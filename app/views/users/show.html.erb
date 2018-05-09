@@ -2,3 +2,56 @@
 <p>Find me in app/views/users/show.html.erb</p>
 <%= @user.email %>
 <%= link_to "Back", :back %>
+
+<div class="container table-responsive">            
+  <h2>Voici les events auxquels vous allez participé</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Location</th>
+          <th>Description</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+<% (@user.attended_events).each do |event| %>
+      <tr>
+        <td><%= event.place %></td>
+        <td><%= event.description %></td>
+        <td><%= event.date %></td>
+        </tr>
+
+ <% end %>
+ </tbody>
+    </table>
+  </div>
+
+
+
+  <div class="container table-responsive">            
+
+ <h2>Voici les events que vous avez organisé</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Location</th>
+          <th>Description</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% (@user.created_events).each do |event| %>
+            <tr>
+              <td><%= event.place %></td>
+              <td><%= event.description %></td>
+              <td><%= event.date %></td>
+            </tr>
+            <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</tbody>
+</table>
+</div>
+

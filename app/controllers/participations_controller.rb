@@ -4,14 +4,14 @@ class ParticipationsController < ApplicationController
   
     def new
       @participation = Participation.new
-      @participation.user = current_user
-      @participation.event = Event.find(params[:event_id])
+      @participation.attendee = current_user
+      @participation.attended_event = Event.find(params[:event_id])
     end
   
     def create
       @participation = Participation.new(participation_params)
-      @participation.user = current_user
-      @participation.event = Event.find(params[:event_id])  
+      @participation.attendee = current_user
+      @participation.attended_event = Event.find(params[:event_id])  
 
       if @participation.save
         redirect_to events_path, notice: "You are registered!"
